@@ -3,7 +3,14 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const app = express();
 const cors = require('cors');
-app.use(cors({ origin: '*' }));
+
+app.use(cors({
+    origin: '*', // Allow requests from any origin
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true // Note: credentials cannot be used with wildcard origin
+  }));
+  
 app.use(express.json());
 
 dotenv.config();
