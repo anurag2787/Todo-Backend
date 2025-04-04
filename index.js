@@ -5,10 +5,11 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: '*', // Allow requests from any origin
+    methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+    credentials: true // Note: credentials cannot be used with wildcard origin
+  }));
 
 app.use(express.json());
 
